@@ -1,0 +1,49 @@
+sudo apt-get update
+sudo apt-get install -y ca-certificates curl gnupg
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+NODE_MAJOR=20
+echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+sudo apt-get update
+sudo apt-get install nodejs -y
+
+
+npm install web3
+npm install --save-dev @nomiclabs/hardhat-ethers ethers @nomiclabs/hardhat-waffle ethereum-waffle chai
+npm i @openzeppelin/contracts@4.5.0
+
+
+npx create-react-app simple
+
+
+# under "simple" directory
+vi hardhat.config.js
+mkdir scripts
+cd scripts
+vi deploy.js   # edit deploy 
+
+cd ../simple/src
+
+vi App.js
+
+cd /home/ubuntu/contracts
+vi Simplestorage.js
+
+
+term1:
+npx hardhat node --hostname ec2-35-94-202-29.us-west-2.compute.amazonaws.com
+term2: 
+npx   hardhat run scripts/deploy.js --network localhost
+0x5FbDB2315678afecb367f032d93F642f64180aa3
+
+ cd contractsData/
+ubuntu@ip-172-31-30-44:~/simple/src/contractsData$ ls
+SimpleStorage-address.json  SimpleStorage.json
+ubuntu@ip-172-31-30-44:~/simple/src/contractsData$ cp SimpleStorage.json ../..
+ubuntu@ip-172-31-30-44:~/simple/src/contractsData$ cd ../..
+ubuntu@ip-172-31-30-44:~/simple$ cp SimpleStorage.json src
+
+
+# add contract id to SimpleStorage.js
+
+npm start
